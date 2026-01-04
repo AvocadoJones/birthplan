@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birth Preferences – VHC Arlington</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --accent:#0f766e;
+      --soft:#f8fafc;
+    }
+    html,body{background:var(--bg); color:var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif; line-height:1.35; margin:0;}
+    .wrap{max-width: 980px; margin: 0 auto; padding: 20px;}
+    header{border:1px solid var(--line); border-radius:14px; padding:16px 16px 12px; background:var(--soft);}
+    h1{font-size: 22px; margin:0 0 6px;}
+    .sub{color:var(--muted); font-size: 14px;}
+    .grid{display:grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px;}
+    @media (min-width: 860px){ .grid{grid-template-columns: 1fr 1fr;} }
+    .card{border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff;}
+    .card h2{font-size:16px; margin:0 0 10px; padding-bottom:8px; border-bottom:1px solid var(--line);}
+    ul{margin:0; padding-left: 18px;}
+    li{margin: 6px 0;}
+    .muted{color:var(--muted);}
+    .pillbar{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px;}
+    .pill{border:1px solid var(--line); border-radius:999px; padding:7px 10px; font-size: 13px; background:#fff;}
+    .pill strong{color:var(--accent);}
+    .top3{border-left: 4px solid var(--accent); padding-left: 12px;}
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px;}
+    button{border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; cursor:pointer; font-size:14px;}
+    button:hover{border-color:#cbd5e1;}
+    .small{font-size: 13px;}
+    .footer{margin-top: 14px; color:var(--muted); font-size: 12px;}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+    .hr{height:1px; background:var(--line); margin: 12px 0;}
+    .note{background: #ecfeff; border:1px solid #a5f3fc; border-radius: 12px; padding: 10px 12px; color:#083344;}
+    @media print{
+      .btns{display:none;}
+      header{break-inside:avoid;}
+      .card{break-inside:avoid;}
+      a[href]:after{content:"";}
+      .wrap{padding: 0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Birth Preferences (Quick Reference)</h1>
+      <div class="sub">
+        Facility: <strong>VHC Health (Arlington)</strong> &nbsp;|&nbsp;
+        Patient: <span class="mono">[Mother Name]</span> &nbsp;|&nbsp;
+        EDD: <span class="mono">[MM/DD/YYYY]</span> &nbsp;|&nbsp;
+        Provider: <span class="mono">[OB/Midwife]</span>
+      </div>
+
+      <div class="pillbar">
+        <div class="pill"><strong>Goal:</strong> physiologic vaginal birth; minimize unnecessary interventions</div>
+        <div class="pill"><strong>Do not offer epidural</strong> routinely (patient will request if desired)</div>
+        <div class="pill"><strong>Avoid episiotomy</strong> unless emergent/necessary</div>
+        <div class="pill"><strong>Baby stays with parents</strong> unless medically indicated</div>
+      </div>
+
+      <div class="btns">
+        <button onclick="window.print()">Print / Save as PDF</button>
+        <button onclick="document.getElementById('share').scrollIntoView({behavior:'smooth'})">Sharing Notes</button>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="top3 small">
+        <strong>Top priorities</strong>
+        <ul>
+          <li>Unmedicated plan; please do not routinely offer epidural.</li>
+          <li>Delayed cord clamping; prioritize uninterrupted golden hour when stable.</li>
+          <li>Limit interventions (episiotomy, cesarean, frequent cervical checks) unless medically indicated.</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="grid" style="margin-top:14px;">
+      <section class="card">
+        <h2>Support People / Room Preferences</h2>
+        <ul>
+          <li>People in room during labor and delivery: father of baby and doula only.</li>
+          <li>Low-stimulation environment requested (dim lighting; patient will provide twinkle/birthing lights).</li>
+          <li>Music permitted; patient will provide playlist and Bluetooth speaker.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Communication / Consent</h2>
+        <ul>
+          <li>Please explain significant changes and obtain consent before procedures when feasible.</li>
+          <li>If recommendations change due to evolving risk, please state the indication and options.</li>
+          <li>Preference language: “avoid unless medically indicated.”</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Monitoring / Mobility / IV</h2>
+        <ul>
+          <li>Intermittent fetal monitoring preferred if clinically appropriate for risk status.</li>
+          <li>Saline lock / portable IV preferred to allow ambulation when possible.</li>
+          <li>Freedom to move, hydrate (as allowed), and use position changes during labor.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Pain Management</h2>
+        <ul>
+          <li>Plan: unmedicated.</li>
+          <li>Please do not routinely offer epidural; patient understands she may request it at any time.</li>
+          <li>Non-pharmacologic comfort measures encouraged (movement, positioning, doula support).</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Cervical Exams</h2>
+        <ul>
+          <li>Limit cervical checks to those necessary for clinical decision-making.</li>
+          <li>Prefer fewer exams and spacing them out when possible; minimize repeat exams by multiple staff.</li>
+          <li>If an exam is recommended, please briefly state how it will change management.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Labor Interventions (General)</h2>
+        <ul>
+          <li>Vaginal delivery preferred; avoid cesarean if safely possible.</li>
+          <li>Avoid episiotomy unless emergent/necessary.</li>
+          <li>Artificial rupture of membranes, augmentation, or operative vaginal delivery only if indicated and discussed.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Induction / Augmentation Preferences (If Needed)</h2>
+        <div class="note small">
+          We understand induction method depends on cervix, fetal status, and clinical context.
+        </div>
+        <ul>
+          <li>If induction is indicated, preference is to start with cervical ripening approaches (mechanical balloon and/or prostaglandin cervical ripening per provider judgment) rather than proceeding directly to oxytocin when appropriate.</li>
+          <li>If oxytocin (Pitocin) is needed, request a low-dose protocol: start at the lowest feasible rate and titrate slowly in small increments, with close assessment of contraction pattern and fetal response, aiming to avoid tachysystole.</li>
+          <li>If tachysystole or fetal intolerance occurs, prefer prompt dose reduction/stop and reassessment.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Second Stage / Perineal Protection</h2>
+        <ul>
+          <li>Patient-directed pushing preferred when feasible.</li>
+          <li>Patient is comfortable with perineal massage and other perineal protective measures as clinically appropriate.</li>
+          <li>Open to warm compresses and position changes to reduce tearing risk.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Cord Management</h2>
+        <ul>
+          <li>Delayed cord clamping preferred when mother and baby are stable.</li>
+          <li>Request: delay clamping at least 60 seconds, and longer if feasible without compromising safety.</li>
+        </ul>
+        <div class="muted small">
+          Note: some teams use time-based guidance (e.g., 30–60+ seconds); some use cord pulsation/appearance as a practical cue.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Placenta Delivery (Third Stage)</h2>
+        <ul>
+          <li>Prefer physiologic placental delivery when safe.</li>
+          <li>Please avoid traction/tugging on the umbilical cord to deliver the placenta unless clinically indicated.</li>
+          <li>If active management is recommended due to bleeding risk, please explain the indication and options.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Golden Hour / Skin-to-Skin</h2>
+        <ul>
+          <li>Immediate skin-to-skin requested if mother/baby stable.</li>
+          <li>Uninterrupted golden hour requested when clinically appropriate; delay routine measurements and non-urgent procedures.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Newborn Location / Rooming-In</h2>
+        <ul>
+          <li>Baby to remain with parents as much as medically appropriate.</li>
+          <li>If separation is required, request explanation and parent accompaniment when feasible.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Bathing</h2>
+        <ul>
+          <li>Delay first bath until after golden hour is complete (unless medically necessary).</li>
+          <li>When bath occurs, prefer submerged bath over sponge bath if clinically appropriate.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Labs, Injections, Vaccinations</h2>
+        <ul>
+          <li>For blood tests, injections, or vaccinations: request one parent present and holding baby unless medically contraindicated.</li>
+          <li>Please explain what is being done before proceeding.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>If Cesarean Becomes Necessary</h2>
+        <div class="note small">
+          We understand cesarean may be the safest option in some situations. If needed, we request family-centered practices when feasible.
+        </div>
+        <ul>
+          <li>Father present in the OR per policy.</li>
+          <li>Skin-to-skin as soon as mother and baby are stable (in OR or PACU).</li>
+          <li>Delayed cord clamping if feasible and safe in the surgical context.</li>
+          <li>Minimize separation; baby with parents when possible.</li>
+          <li>For labs/injections: father holds baby when feasible; inform parents before any procedures.</li>
+        </ul>
+      </section>
+
+      <section class="card" id="share">
+        <h2>Sharing Notes (For Staff)</h2>
+        <ul>
+          <li>This page is designed to be skimmed quickly by OB, RN, anesthesia, and doula.</li>
+          <li>Patient preference: collaboration and shared decision-making; flexibility if clinical status changes.</li>
+          <li>To print: use the “Print / Save as PDF” button above.</li>
+        </ul>
+        <div class="footer">
+          Last updated: <span class="mono">[MM/DD/YYYY]</span> &nbsp;|&nbsp; Contact during admission: <span class="mono">[Partner phone]</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      This document states preferences and does not replace clinical judgment or emergent management.
+    </div>
+  </div>
+</body>
+</html>
