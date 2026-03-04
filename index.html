@@ -727,6 +727,9 @@
     });
   });
 
+  // Expand all sections by default (on load)
+  document.addEventListener('DOMContentLoaded', () => toggleAll(true));
+
   // Print: expand all sections
   window.addEventListener('beforeprint', () => toggleAll(true));
 </script>
