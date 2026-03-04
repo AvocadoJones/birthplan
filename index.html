@@ -3,242 +3,733 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Birth Preferences – VHC Arlington</title>
+  <title>Birth Preferences – Sarah C | VHC Arlington</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#ffffff;
-      --ink:#111827;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --accent:#0f766e;
-      --soft:#f8fafc;
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #6b7280;
+      --line: #e2e2df;
+      --teal: #0d6e64;
+      --teal-light: #e6f5f3;
+      --teal-dark: #094f48;
+      --amber: #b45309;
+      --amber-light: #fef3c7;
+      --rose: #be123c;
+      --rose-light: #ffe4e6;
+      --blue: #1e40af;
+      --blue-light: #dbeafe;
+      --violet: #6d28d9;
+      --violet-light: #ede9fe;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     }
-    html,body{background:var(--bg); color:var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif; line-height:1.35; margin:0;}
-    .wrap{max-width: 980px; margin: 0 auto; padding: 20px;}
-    header{border:1px solid var(--line); border-radius:14px; padding:16px 16px 12px; background:var(--soft);}
-    h1{font-size: 22px; margin:0 0 6px;}
-    .sub{color:var(--muted); font-size: 14px;}
-    .grid{display:grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px;}
-    @media (min-width: 860px){ .grid{grid-template-columns: 1fr 1fr;} }
-    .card{border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff;}
-    .card h2{font-size:16px; margin:0 0 10px; padding-bottom:8px; border-bottom:1px solid var(--line);}
-    ul{margin:0; padding-left: 18px;}
-    li{margin: 6px 0;}
-    .muted{color:var(--muted);}
-    .pillbar{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px;}
-    .pill{border:1px solid var(--line); border-radius:999px; padding:7px 10px; font-size: 13px; background:#fff;}
-    .pill strong{color:var(--accent);}
-    .top3{border-left: 4px solid var(--accent); padding-left: 12px;}
-    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px;}
-    button{border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; cursor:pointer; font-size:14px;}
-    button:hover{border-color:#cbd5e1;}
-    .small{font-size: 13px;}
-    .footer{margin-top: 14px; color:var(--muted); font-size: 12px;}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-    .hr{height:1px; background:var(--line); margin: 12px 0;}
-    .note{background: #ecfeff; border:1px solid #a5f3fc; border-radius: 12px; padding: 10px 12px; color:#083344;}
-    @media print{
-      .btns{display:none;}
-      header{break-inside:avoid;}
-      .card{break-inside:avoid;}
-      a[href]:after{content:"";}
-      .wrap{padding: 0;}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── STICKY HEADER ─── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--teal-dark);
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .top-bar h1 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .top-bar .meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .meta-chip {
+      background: rgba(255,255,255,.15);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+    .top-bar-right {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .top-bar-right button {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .top-bar-right button:hover { background: rgba(255,255,255,.25); }
+
+    /* ─── JUMP NAV ─── */
+    .jump-nav {
+      position: sticky;
+      top: 52px;
+      z-index: 99;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 0 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    }
+    .jump-nav::-webkit-scrollbar { display: none; }
+    .jump-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2px;
+    }
+    .jump-nav a {
+      display: block;
+      padding: 10px 13px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      white-space: nowrap;
+      border-bottom: 2.5px solid transparent;
+      transition: color .15s, border-color .15s;
+      letter-spacing: 0.01em;
+    }
+    .jump-nav a:hover,
+    .jump-nav a.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px 60px;
+    }
+
+    /* ─── PRIORITIES BANNER ─── */
+    .priorities {
+      background: var(--teal);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .priorities-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: .85;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .priorities ol {
+      padding-left: 22px;
+      display: grid;
+      gap: 6px;
+    }
+    .priorities li {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .priorities li::marker { font-weight: 700; }
+
+    /* ─── QUICK PILLS ROW ─── */
+    .pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .qpill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: var(--shadow);
+    }
+    .qpill .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-teal { background: var(--teal); }
+    .dot-amber { background: var(--amber); }
+    .dot-rose { background: var(--rose); }
+
+    /* ─── SECTION CARDS ─── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      scroll-margin-top: 120px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .12s;
+    }
+    .section-header:hover { background: #fafaf8; }
+    .section-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 15px;
+      font-weight: 600;
+      flex: 1;
+      letter-spacing: -0.01em;
+    }
+    .section-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .chevron {
+      width: 20px; height: 20px;
+      color: var(--muted);
+      transition: transform .2s ease;
+      flex-shrink: 0;
+    }
+    .section.open .chevron { transform: rotate(180deg); }
+    .section-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+    .section.open .section-body { max-height: 800px; }
+    .section-body-inner {
+      padding: 0 18px 16px 60px;
+    }
+    .section-body ul { padding-left: 18px; }
+    .section-body li {
+      margin: 5px 0;
+      line-height: 1.5;
+      font-size: 14.5px;
+    }
+    .section-body li::marker { color: var(--muted); }
+
+    /* ─── CALLOUT BOX ─── */
+    .callout {
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .callout-info { background: var(--teal-light); border-left: 3px solid var(--teal); }
+    .callout-warn { background: var(--amber-light); border-left: 3px solid var(--amber); }
+
+    /* ─── C-SECTION SPECIAL ─── */
+    .csection-card {
+      border-color: var(--rose);
+      border-width: 2px;
+    }
+    .csection-card .section-header { background: var(--rose-light); }
+
+    /* ─── EXPAND/COLLAPSE ALL ─── */
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .controls button {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-family: inherit;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .controls button:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ─── FOOTER ─── */
+    .page-footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+    }
+
+    /* ─── COLOR HELPERS ─── */
+    .bg-teal { background: var(--teal-light); color: var(--teal-dark); }
+    .bg-blue { background: var(--blue-light); color: var(--blue); }
+    .bg-amber { background: var(--amber-light); color: var(--amber); }
+    .bg-rose { background: var(--rose-light); color: var(--rose); }
+    .bg-violet { background: var(--violet-light); color: var(--violet); }
+
+    /* ─── PRINT ─── */
+    @media print {
+      .top-bar { position: static; background: #fff; color: #000; box-shadow: none; border-bottom: 2px solid #000; }
+      .top-bar-right, .jump-nav, .controls { display: none !important; }
+      .meta-chip { border: 1px solid #ccc; }
+      .section { break-inside: avoid; }
+      .section-body { max-height: none !important; }
+      .section.open .section-body, .section-body { max-height: none !important; overflow: visible; }
+      .priorities { background: #fff; color: #000; border: 2px solid var(--teal); }
+      body { font-size: 13px; }
+      .wrap { padding: 8px; }
+      .section { margin-bottom: 8px; }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 8px 12px; }
+      .top-bar h1 { font-size: 15px; }
+      .section-body-inner { padding-left: 18px; }
+      .wrap { padding: 10px 12px 60px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Birth Preferences (Quick Reference)</h1>
-      <div class="sub">
-        Facility: <strong>VHC Health (Arlington)</strong> &nbsp;|&nbsp;
-        Patient: <span class="mono">[Sarah C]</span> &nbsp;|&nbsp;
-        EDD: <span class="mono">[MM/DD/YYYY]</span> &nbsp;|&nbsp;
-        Provider: <span class="mono">[OB: Dr Sommer / Doula: Eliza]</span>
-      </div>
 
-      <div class="pillbar">
-        <div class="pill"><strong>Goal:</strong> physiologic vaginal birth; minimize unnecessary interventions</div>
-        <div class="pill"><strong>Do not offer epidural</strong> routinely (patient will request if desired)</div>
-        <div class="pill"><strong>Avoid episiotomy</strong> unless emergent/necessary</div>
-        <div class="pill"><strong>Baby stays with parents</strong> unless medically indicated</div>
-      </div>
-
-      <div class="btns">
-        <button onclick="window.print()">Print / Save as PDF</button>
-        <button onclick="document.getElementById('share').scrollIntoView({behavior:'smooth'})">Sharing Notes</button>
-      </div>
-
-      <div class="hr"></div>
-
-      <div class="top3 small">
-        <strong>Top priorities</strong>
-        <ul>
-          <li>Unmedicated plan; please do not routinely offer epidural.</li>
-          <li>Delayed cord clamping; prioritize uninterrupted golden hour when stable.</li>
-          <li>Limit interventions (episiotomy, cesarean, frequent cervical checks) unless medically indicated.</li>
-        </ul>
-      </div>
-    </header>
-
-    <div class="grid" style="margin-top:14px;">
-      <section class="card">
-        <h2>Support People / Room Preferences</h2>
-        <ul>
-          <li>People in room during labor and delivery: father of baby and doula only.</li>
-          <li>Low-stimulation environment requested (dim lighting; patient will provide twinkle/birthing lights).</li>
-          <li>Music permitted; patient will provide playlist and Bluetooth speaker.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Communication / Consent</h2>
-        <ul>
-          <li>Please explain significant changes and obtain consent before procedures when feasible.</li>
-          <li>If recommendations change due to evolving risk, please state the indication and options.</li>
-          <li>Preference language: “avoid unless medically indicated.”</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Monitoring / Mobility / IV</h2>
-        <ul>
-          <li>Intermittent fetal monitoring preferred if clinically appropriate for risk status.</li>
-          <li>Saline lock / portable IV preferred to allow ambulation when possible.</li>
-          <li>Freedom to move, hydrate (as allowed), and use position changes during labor.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Pain Management</h2>
-        <ul>
-          <li>Plan: unmedicated.</li>
-          <li>Please do not routinely offer epidural; patient understands she may request it at any time.</li>
-          <li>Non-pharmacologic comfort measures encouraged (movement, positioning, doula support).</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Cervical Exams</h2>
-        <ul>
-          <li>Limit cervical checks to those necessary for clinical decision-making.</li>
-          <li>Prefer fewer exams and spacing them out when possible; minimize repeat exams by multiple staff.</li>
-          <li>If an exam is recommended, please briefly state how it will change management.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Labor Interventions (General)</h2>
-        <ul>
-          <li>Vaginal delivery preferred; avoid cesarean if safely possible.</li>
-          <li>Avoid episiotomy unless emergent/necessary.</li>
-          <li>Artificial rupture of membranes, augmentation, or operative vaginal delivery only if indicated and discussed.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Induction / Augmentation Preferences (If Needed)</h2>
-        <div class="note small">
-          We understand induction method depends on cervix, fetal status, and clinical context.
-        </div>
-        <ul>
-          <li>If induction is indicated, preference is to start with cervical ripening approaches (mechanical balloon and/or prostaglandin cervical ripening per provider judgment) rather than proceeding directly to oxytocin when appropriate.</li>
-          <li>If oxytocin (Pitocin) is needed, request a low-dose protocol: start at the lowest feasible rate and titrate slowly in small increments, with close assessment of contraction pattern and fetal response, aiming to avoid tachysystole.</li>
-          <li>If tachysystole or fetal intolerance occurs, prefer prompt dose reduction/stop and reassessment.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Second Stage / Perineal Protection</h2>
-        <ul>
-          <li>Patient-directed pushing preferred when feasible.</li>
-          <li>Patient is comfortable with perineal massage and other perineal protective measures as clinically appropriate.</li>
-          <li>Open to warm compresses and position changes to reduce tearing risk.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Cord Management</h2>
-        <ul>
-          <li>Delayed cord clamping preferred when mother and baby are stable.</li>
-          <li>Request: delay clamping at least 60 seconds, and longer if feasible without compromising safety.</li>
-        </ul>
-        <div class="muted small">
-          Note: some teams use time-based guidance (e.g., 30–60+ seconds); some use cord pulsation/appearance as a practical cue.
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Placenta Delivery (Third Stage)</h2>
-        <ul>
-          <li>Prefer physiologic placental delivery when safe.</li>
-          <li>Please avoid traction/tugging on the umbilical cord to deliver the placenta unless clinically indicated.</li>
-          <li>If active management is recommended due to bleeding risk, please explain the indication and options.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Golden Hour / Skin-to-Skin</h2>
-        <ul>
-          <li>Immediate skin-to-skin requested if mother/baby stable.</li>
-          <li>Uninterrupted golden hour requested when clinically appropriate; delay routine measurements and non-urgent procedures.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Newborn Location / Rooming-In</h2>
-        <ul>
-          <li>Baby to remain with parents as much as medically appropriate.</li>
-          <li>If separation is required, request explanation and parent accompaniment when feasible.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Bathing</h2>
-        <ul>
-          <li>Delay first bath until after golden hour is complete (unless medically necessary).</li>
-          <li>When bath occurs, prefer submerged bath over sponge bath if clinically appropriate.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Labs, Injections, Vaccinations</h2>
-        <ul>
-          <li>For blood tests, injections, or vaccinations: request one parent present and holding baby unless medically contraindicated.</li>
-          <li>Please explain what is being done before proceeding.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>If Cesarean Becomes Necessary</h2>
-        <div class="note small">
-          We understand cesarean may be the safest option in some situations. If needed, we request family-centered practices when feasible.
-        </div>
-        <ul>
-          <li>Father present in the OR per policy.</li>
-          <li>Skin-to-skin as soon as mother and baby are stable (in OR or PACU).</li>
-          <li>Delayed cord clamping if feasible and safe in the surgical context.</li>
-          <li>Minimize separation; baby with parents when possible.</li>
-          <li>For labs/injections: father holds baby when feasible; inform parents before any procedures.</li>
-        </ul>
-      </section>
-
-      <section class="card" id="share">
-        <h2>Sharing Notes (For Staff)</h2>
-        <ul>
-          <li>This page is designed to be skimmed quickly by OB, RN, anesthesia, and doula.</li>
-          <li>Patient preference: collaboration and shared decision-making; flexibility if clinical status changes.</li>
-          <li>To print: use the “Print / Save as PDF” button above.</li>
-        </ul>
-        <div class="footer">
-          Last updated: <span class="mono">[MM/DD/YYYY]</span> &nbsp;|&nbsp; Contact during admission: <span class="mono">[Partner phone]</span>
-        </div>
-      </section>
-    </div>
-
-    <div class="footer">
-      This document states preferences and does not replace clinical judgment or emergent management.
+<!-- ═══ STICKY TOP BAR ═══ -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <h1>Birth Preferences</h1>
+    <div class="meta">
+      <span class="meta-chip">Sarah C</span>
+      <span class="meta-chip">EDD Mar 20 2026</span>
+      <span class="meta-chip">VHC Arlington</span>
     </div>
   </div>
+  <div class="top-bar-right">
+    <button onclick="window.print()">🖨 Print</button>
+  </div>
+</div>
+
+<!-- ═══ JUMP NAVIGATION ═══ -->
+<nav class="jump-nav" id="jumpNav">
+  <div class="jump-nav-inner">
+    <a href="#priorities">Priorities</a>
+    <a href="#s-room">Room</a>
+    <a href="#s-consent">Consent</a>
+    <a href="#s-monitor">Monitoring</a>
+    <a href="#s-pain">Pain Mgmt</a>
+    <a href="#s-cervical">Cervical</a>
+    <a href="#s-labor">Labor</a>
+    <a href="#s-induction">Induction</a>
+    <a href="#s-pushing">Pushing</a>
+    <a href="#s-cord">Cord</a>
+    <a href="#s-placenta">Placenta</a>
+    <a href="#s-golden">Golden Hr</a>
+    <a href="#s-newborn">Newborn</a>
+    <a href="#s-bath">Bath</a>
+    <a href="#s-labs">Labs</a>
+    <a href="#s-csection">C-Section</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═══ PRIORITIES ═══ -->
+  <div class="priorities" id="priorities">
+    <div class="priorities-title">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l5-10 5 10"/><path d="M5.5 7h5"/></svg>
+      3 Things to Know First
+    </div>
+    <ol>
+      <li><strong>Unmedicated plan</strong> — please do not routinely offer epidural. Patient will request if desired.</li>
+      <li><strong>Delayed cord clamping</strong> — prefer waiting until cord turns white (when feasible and safe). Prioritize uninterrupted golden hour when stable.</li>
+      <li><strong>Limit interventions</strong> — avoid episiotomy, cesarean, and frequent cervical checks unless medically indicated.</li>
+    </ol>
+  </div>
+
+  <!-- ═══ QUICK-SCAN PILLS ═══ -->
+  <div class="pills-row">
+    <div class="qpill"><span class="dot dot-teal"></span> Physiologic vaginal birth</div>
+    <div class="qpill"><span class="dot dot-amber"></span> Do not offer epidural</div>
+    <div class="qpill"><span class="dot dot-rose"></span> Avoid episiotomy</div>
+    <div class="qpill"><span class="dot dot-teal"></span> Baby stays with parents</div>
+  </div>
+
+  <!-- ═══ PROVIDER INFO ═══ -->
+  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+    <div class="qpill" style="background:var(--blue-light); border-color:var(--blue);">
+      <strong style="color:var(--blue);">OB:</strong> Dr Jessica Sommer, DO, FACOG
+    </div>
+    <div class="qpill" style="background:var(--violet-light); border-color:var(--violet);">
+      <strong style="color:var(--violet);">Doula:</strong> Eliza Williams
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleAll(true)">Expand All</button>
+    <button onclick="toggleAll(false)">Collapse All</button>
+  </div>
+
+  <!-- ═══ SECTIONS ═══ -->
+
+  <!-- Room -->
+  <div class="section open" id="s-room">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-teal">👥</div>
+      <h2>Support People / Room</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>In room:</strong> Father of baby + doula only.</li>
+        <li>Low-stimulation environment — dim lighting; patient will provide twinkle/birthing lights.</li>
+        <li>Music — patient will provide playlist and Bluetooth speaker.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Consent -->
+  <div class="section open" id="s-consent">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-blue">🤝</div>
+      <h2>Communication / Consent</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Explain significant changes and obtain consent before procedures when feasible.</li>
+        <li>If recommendations change, state the indication and options.</li>
+        <li>Speak to <strong>both patient and spouse</strong> when communicating updates/complications.</li>
+        <li>Preference language: <em>"avoid unless medically indicated."</em></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Monitoring -->
+  <div class="section" id="s-monitor">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-teal">📡</div>
+      <h2>Monitoring / Mobility / IV</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>Intermittent</strong> fetal monitoring preferred if clinically appropriate.</li>
+        <li>If continuous monitoring needed → <strong>wireless preferred</strong> (stay mobile).</li>
+        <li><strong>Saline lock / portable IV</strong> preferred for ambulation.</li>
+        <li>Freedom to move, hydrate, and change positions during labor.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Pain -->
+  <div class="section" id="s-pain">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-amber">💛</div>
+      <h2>Pain Management</h2>
+      <span class="section-badge bg-amber">Unmedicated</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>Plan: unmedicated.</strong></li>
+        <li>Do NOT routinely offer epidural — patient understands she may request it at any time.</li>
+        <li>Non-pharmacologic comfort measures encouraged (movement, positioning, doula support).</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Cervical -->
+  <div class="section" id="s-cervical">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-violet">🩺</div>
+      <h2>Cervical Exams</h2>
+      <span class="section-badge bg-violet">≤ q4h</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Limit to those necessary for clinical decisions — <strong>no more often than every 4 hours</strong> when feasible.</li>
+        <li>Minimize repeat exams by multiple staff — <strong>same provider preferred (OB).</strong></li>
+        <li>If recommended, briefly state how the exam will change management.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Labor -->
+  <div class="section" id="s-labor">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-teal">⚕️</div>
+      <h2>Labor Interventions</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Vaginal delivery preferred — avoid cesarean if safely possible.</li>
+        <li><strong>Avoid episiotomy</strong> unless emergent/necessary.</li>
+        <li>AROM, augmentation, or operative vaginal delivery only if indicated and discussed.</li>
+        <li>When assessing progress, please note if baby's head is well applied to cervix.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Induction -->
+  <div class="section" id="s-induction">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-amber">💧</div>
+      <h2>Induction / Augmentation</h2>
+      <span class="section-badge bg-amber">If needed</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <div class="callout callout-info">We understand induction method depends on cervix, fetal status, and clinical context.</div>
+      <ul>
+        <li>If indicated → start with <strong>cervical ripening</strong> (prostaglandin per provider judgment) before oxytocin. <strong>Prefer to avoid balloon</strong> if possible.</li>
+        <li>If Pitocin needed → <strong>low-dose protocol:</strong> lowest rate, titrate slowly (ideally ≤ q45min), assess contraction pattern + fetal response, avoid tachysystole.</li>
+        <li>If tachysystole or fetal intolerance → prompt dose reduction/stop and reassess.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Pushing -->
+  <div class="section" id="s-pushing">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-teal">🤱</div>
+      <h2>Second Stage / Perineal Protection</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>Patient-directed pushing</strong> preferred when feasible.</li>
+        <li>Comfortable with perineal massage and other perineal protective measures.</li>
+        <li>Open to warm compresses and position changes to reduce tearing risk.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Cord -->
+  <div class="section" id="s-cord">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-blue">🔗</div>
+      <h2>Cord Management</h2>
+      <span class="section-badge bg-blue">Delayed clamp</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>Delayed cord clamping</strong> — at least 60 seconds; prefer waiting until cord turns white when feasible and safe.</li>
+        <li><strong>Father cuts cord</strong> (when feasible and per policy).</li>
+      </ul>
+      <div class="callout callout-info" style="margin-top:8px;">Some teams use time-based guidance (30–60+ sec); some use cord pulsation/appearance as a practical cue.</div>
+    </div></div>
+  </div>
+
+  <!-- Placenta -->
+  <div class="section" id="s-placenta">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-violet">🌿</div>
+      <h2>Placenta Delivery (Third Stage)</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Prefer <strong>physiologic placental delivery</strong> when safe.</li>
+        <li>Avoid cord traction/tugging unless clinically indicated.</li>
+        <li>If active management recommended for bleeding risk → explain indication and options.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Golden Hour -->
+  <div class="section" id="s-golden">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-amber">✨</div>
+      <h2>Golden Hour / Skin-to-Skin</h2>
+      <span class="section-badge bg-amber">Priority</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li><strong>Immediate skin-to-skin</strong> if mother/baby stable.</li>
+        <li><strong>Uninterrupted golden hour</strong> — delay routine measurements and non-urgent procedures.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Newborn -->
+  <div class="section" id="s-newborn">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-blue">👶</div>
+      <h2>Newborn / Rooming-In</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Baby remains with parents as much as medically appropriate.</li>
+        <li>If separation required → explain reason and allow parent accompaniment when feasible.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Bath -->
+  <div class="section" id="s-bath">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-teal">🛁</div>
+      <h2>Bathing</h2>
+      <span class="section-badge bg-teal">Delay ~24h</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>Delay first bath ~24 hours (WHO guidance) when feasible.</li>
+        <li>If meconium present → sponge bath is okay.</li>
+        <li>Otherwise → prefer <strong>submerged bath</strong> over sponge bath if clinically appropriate.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- Labs -->
+  <div class="section" id="s-labs">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-violet">💉</div>
+      <h2>Labs / Injections / Vaccinations</h2>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <ul>
+        <li>One parent present and <strong>holding baby</strong> during all blood tests, injections, or vaccinations (unless medically contraindicated).</li>
+        <li>Explain what is being done before proceeding.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- C-Section -->
+  <div class="section csection-card" id="s-csection">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="section-icon bg-rose">🏥</div>
+      <h2>If Cesarean Becomes Necessary</h2>
+      <span class="section-badge bg-rose">Contingency</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="section-body"><div class="section-body-inner">
+      <div class="callout callout-warn">We understand cesarean may be the safest option in some situations. If needed, we request family-centered practices when feasible.</div>
+      <ul>
+        <li><strong>Father and doula in OR</strong> per policy.</li>
+        <li>Skin-to-skin ASAP (in OR or PACU) when mother and baby are stable.</li>
+        <li>Delayed cord clamping if feasible in surgical context.</li>
+        <li>Minimize separation — baby with parents when possible.</li>
+        <li>Father holds baby for labs/injections; inform parents before any procedures.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="page-footer">
+    This document states preferences and does not replace clinical judgment or emergent management.<br>
+    <strong>Last updated:</strong> <span style="font-family:'JetBrains Mono',monospace;">[03/03/2026]</span> &nbsp;|&nbsp;
+    <strong>Contact during admission:</strong> <span style="font-family:'JetBrains Mono',monospace;">[703-850-9025]</span>
+  </div>
+</div>
+
+<script>
+  function toggle(header) {
+    header.closest('.section').classList.toggle('open');
+  }
+
+  function toggleAll(open) {
+    document.querySelectorAll('.section').forEach(s => {
+      s.classList.toggle('open', open);
+    });
+  }
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('.section, .priorities');
+  const navLinks = document.querySelectorAll('.jump-nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => { if (s.id) observer.observe(s); });
+
+  // Auto-expand section when navigating to it
+  navLinks.forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el && el.classList.contains('section')) {
+        el.classList.add('open');
+      }
+    });
+  });
+
+  // Print: expand all sections
+  window.addEventListener('beforeprint', () => toggleAll(true));
+</script>
+
 </body>
 </html>
